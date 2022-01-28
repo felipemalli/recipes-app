@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
 import local from '../services/handleLocal';
 // import { sendEmail } from '../redux/actions';
+// import HeaderFoods from '../components/Headers/HeaderFoods';
 
 function Login({ history }) {
   const [email, setEmail] = useState({ email: '' });
