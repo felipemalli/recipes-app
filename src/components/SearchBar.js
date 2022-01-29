@@ -3,37 +3,43 @@ import React from 'react';
 function SearchBar() {
   const onChangeValue = (event) => {
     console.log(event.target.value);
-  }
+  };
 
   const handleClick = (event) => {
     console.log(event.target.value);
-  }
+  };
 
   return (
-    <div onChange={onChangeValue}>
-      <input type="text" data-testid="search-input"/>
+    <div onChange={ onChangeValue }>
+      <input
+        type="text"
+        data-testid="search-input"
+      />
       <input
         type="radio"
         data-testid="ingredient-search-radio"
         value="ingredient"
         name="gender"
-      /> Ingredient
+      />
+      Ingredient
       <input
         type="radio"
         data-testid="name-search-radio"
         value="name"
         name="gender"
-      /> Name
+      />
+      Name
       <input
         type="radio"
         data-testid="first-letter-search-radio"
         value="first-letter"
         name="gender"
-      /> First letter
+      />
+      First letter
       <button
         type="button"
         data-testid="exec-search-btn"
-        onClick={ handleClick() }
+        onClick={ () => handleClick() }
       >
         Search
       </button>
