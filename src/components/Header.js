@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import RecipeContext from '../context/RecipeContext';
 import Profile from '../images/profileIcon.svg';
 import Search from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
 
 function Header(props) {
-  const { title, search } = props;
-  console.log(search);
+  const { title, haveSearch } = props;
+
+  const { enableSearch, setEnableSearch } = useContext(RecipeContext);
+
   return (
     <div>
       <header>
-        <img src={ Profile } alt="profile" data-testid="profile-top-btn" />
+        <Link to="/profile">
+          <img src={ Profile } alt="profile" data-testid="profile-top-btn" />
+        </Link>
         <h1 data-testid="page-title">{title}</h1>
         {
-          search
-          && <img src={ Search } alt="search" data-testid="search-top-btn" />
+          haveSearch
+          && (
+            <button type="button" onClick={ () => setEnableSearch(!enableSearch) }>
+              <img src={ Search } alt="search" data-testid="search-top-btn" />
+            </button>
+          )
         }
+        { enableSearch && <SearchBar /> }
       </header>
     </div>
   );
@@ -22,7 +34,7 @@ function Header(props) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  search: PropTypes.bool.isRequired,
+  haveSearch: PropTypes.bool.isRequired,
 };
 
 export default Header;
