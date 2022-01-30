@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
 import local from '../services/handleLocal';
 // import { sendEmail } from '../redux/actions';
 // import HeaderFoods from '../components/Headers/HeaderFoods';
+// import SearchBar from '../components/SearchBar';
 
 function Login({ history }) {
   const [email, setEmail] = useState({ email: '' });
@@ -12,7 +12,6 @@ function Login({ history }) {
   const validateForms = () => {
     const minLength = 6;
     const emailValidate = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    console.log(email);
     return emailValidate.test(email.email) && password.length > minLength;
   };
 
@@ -26,6 +25,7 @@ function Login({ history }) {
 
   return (
     <main>
+      {/* <SearchBar /> */}
       <form>
         <label htmlFor="email-input">
           Email
@@ -67,10 +67,4 @@ Login.propTypes = {
   }).isRequired,
 };
 
-// mapDispatchToProps = (dispatch) => {(
-//   setEmail: (email) => dispatch(sendEmail(email));
-// )};
-
 export default Login;
-
-// export default connect(null, mapDispatchToProps)(Login);

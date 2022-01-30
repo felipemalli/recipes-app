@@ -1,24 +1,22 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import {
-  Login,
-  Foods,
-  Drinks,
-  FoodDetails,
-  DrinkDetails,
-  FoodInProgress,
-  DrinkInProgress,
-  Explore,
-  ExploreFoods,
-  ExploreDrinks,
-  ExploreFoodsByIngredients,
-  ExploreDrinksByIngredients,
-  ExploreFoodsByNationalities,
-  Profile,
-  DoneRecipes,
-  FavoriteRecipes,
-  NotFound,
-} from '../pages/index';
+import Login from '../pages/Login';
+import Foods from '../pages/Foods';
+import Drinks from '../pages/Drinks';
+import FoodDetails from '../pages/FoodDetails';
+import DrinkDetails from '../pages/DrinkDetails';
+import FoodInProgress from '../pages/FoodInProgress';
+import DrinkInProgress from '../pages/DrinkInProgress';
+import Explore from '../pages/Explore';
+import ExploreFoods from '../pages/ExploreFoods';
+import ExploreDrinks from '../pages/ExploreDrinks';
+import ExploreFoodsByIngredients from '../pages/ExploreFoodsByIngredients';
+import ExploreDrinksByIngredients from '../pages/ExploreDrinksByIngredients';
+import ExploreFoodsByNationalities from '../pages/ExploreFoodsByNationalities';
+import Profile from '../pages/Profile';
+import DoneRecipes from '../pages/DoneRecipes';
+import FavoriteRecipes from '../pages/FavoriteRecipes';
+import NotFound from '../pages/NotFound';
 
 function Routes() {
   return (
