@@ -1,26 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 import requestAPI from '../services/requestAPI';
 
 function InitialCategory(props) {
-  const { categories, get } = props;
+  const { categories, get, type } = props;
 
   const { setMainFilter, setCategoryFilter } = useContext(RecipeContext);
 
   const [saveLastTarget, setSaveLastTarget] = useState('');
   let enableFilter = true;
+  const CATEGORIES_LIMITS = 12;
 
   const handleClick = ({ target }) => {
-    if (saveLastTarget === target.name) enableFilter = !enableFilter;
+    if (saveLastTarget === target.name) {
+      enableFilter = !enableFilter;
+      setSaveLastTarget('');
+    }
     if (enableFilter) {
       requestAPI[get].byCategory(target.name).then((data) => {
-        setCategoryFilter(data);
+        setCategoryFilter((data[type]).filter((_, i) => i < CATEGORIES_LIMITS));
         setMainFilter('category');
+        setSaveLastTarget(target.name);
       });
     }
     if (!enableFilter) setMainFilter('');
-    setSaveLastTarget(target.name);
   };
 
   const resetFilter = () => {
@@ -30,7 +35,7 @@ function InitialCategory(props) {
 
   return (
     <nav>
-      <button type="button" onClick={ resetFilter }>
+      <button type="button" onClick={ resetFilter } data-testid="All-category-filter">
         All
       </button>
       {categories.map(({ strCategory }) => (
@@ -51,6 +56,7 @@ function InitialCategory(props) {
 InitialCategory.propTypes = {
   categories: PropTypes.arrayOf(Object).isRequired,
   get: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default InitialCategory;

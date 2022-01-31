@@ -11,7 +11,7 @@ function Drinks() {
   const [firstDrinks, setFirstDrinks] = useState([]);
   const [firstCategories, setfirstCategories] = useState([]);
   const
-    { mainDrinks, setMainDrinks, mainFilter, categoryFilter,
+    { mainDrinks, setMainDrinks, mainFilter, categoryFilter, searchBarFilter,
     } = useContext(RecipeContext);
 
   useEffect(() => {
@@ -26,14 +26,14 @@ function Drinks() {
 
   useEffect(() => {
     if (mainFilter === '') setMainDrinks(initialDrinks);
-    if (mainFilter === 'category') setMainDrinks(categoryFilter.drinks);
-    if (mainFilter === 'searchBar') setMainDrinks();
-  }, [firstDrinks, categoryFilter, mainFilter]);
+    if (mainFilter === 'category') setMainDrinks(categoryFilter);
+    if (mainFilter === 'searchBar') setMainDrinks(searchBarFilter);
+  }, [firstDrinks, categoryFilter, mainFilter, searchBarFilter]);
 
   return (
     <div>
       <Header title="Drinks" haveSearch />
-      <InitialCategory categories={ initialCategories } get="getDrinks" />
+      <InitialCategory categories={ initialCategories } get="getDrinks" type="drinks" />
       {mainDrinks.map(({ idDrink, strDrinkThumb, strDrink }, i) => (<RecipeCard
         key={ idDrink }
         img={ strDrinkThumb }
