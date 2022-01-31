@@ -11,7 +11,6 @@ function InitialCategory(props) {
 
   const [saveLastTarget, setSaveLastTarget] = useState('');
   let enableFilter = true;
-  const CATEGORIES_LIMITS = 12;
 
   const handleClick = ({ target }) => {
     if (saveLastTarget === target.name) {
@@ -20,7 +19,7 @@ function InitialCategory(props) {
     }
     if (enableFilter) {
       requestAPI[get].byCategory(target.name).then((data) => {
-        setCategoryFilter((data[type]).filter((_, i) => i < CATEGORIES_LIMITS));
+        setCategoryFilter(data[type]);
         setMainFilter('category');
         setSaveLastTarget(target.name);
       });

@@ -19,29 +19,31 @@ function Drinks() {
     requestAPI.getDrinks.categories().then((data) => setfirstCategories(data.drinks));
   }, []);
 
+  useEffect(() => {
+    if (mainFilter === '') setMainDrinks(firstDrinks);
+    if (mainFilter === 'category') setMainDrinks(categoryFilter);
+    if (mainFilter === 'searchBar') setMainDrinks(searchBarFilter.drinks);
+  }, [firstDrinks, categoryFilter, mainFilter, searchBarFilter]);
+
   const INITIAL_DRINK_LIMIT = 12;
   const INITIAL_CATEGORY_LIMIT = 5;
-  const initialDrinks = firstDrinks.filter((_, i) => i < INITIAL_DRINK_LIMIT);
   const initialCategories = firstCategories.filter((_, i) => i < INITIAL_CATEGORY_LIMIT);
-
-  useEffect(() => {
-    if (mainFilter === '') setMainDrinks(initialDrinks);
-    if (mainFilter === 'category') setMainDrinks(categoryFilter);
-    if (mainFilter === 'searchBar') setMainDrinks(searchBarFilter);
-  }, [firstDrinks, categoryFilter, mainFilter, searchBarFilter]);
 
   return (
     <div>
-      <Header title="Drinks" haveSearch />
+      <Header title="Drinks" haveSearch get="getDrinks" />
       <InitialCategory categories={ initialCategories } get="getDrinks" type="drinks" />
-      {mainDrinks.map(({ idDrink, strDrinkThumb, strDrink }, i) => (<RecipeCard
-        key={ idDrink }
-        img={ strDrinkThumb }
-        name={ strDrink }
-        index={ i }
-        id={ idDrink }
-        type="drinks"
-      />))}
+      {mainDrinks && mainDrinks
+        .filter((_, i) => i < INITIAL_DRINK_LIMIT)
+        .map(({ idDrink, strDrinkThumb, strDrink }, i) => (
+          <RecipeCard
+            key={ idDrink }
+            img={ strDrinkThumb }
+            name={ strDrink }
+            index={ i }
+            id={ idDrink }
+            type="drinks"
+          />))}
       <Footer />
     </div>
   );

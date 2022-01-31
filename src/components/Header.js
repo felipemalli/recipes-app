@@ -7,7 +7,7 @@ import Search from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
 function Header(props) {
-  const { title, haveSearch } = props;
+  const { title, haveSearch, get } = props;
 
   const { enableSearch, setEnableSearch } = useContext(RecipeContext);
 
@@ -26,7 +26,7 @@ function Header(props) {
             </button>
           )
         }
-        { enableSearch && <SearchBar /> }
+        { enableSearch && <SearchBar get={ get } /> }
       </header>
     </div>
   );
@@ -35,6 +35,7 @@ function Header(props) {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
   haveSearch: PropTypes.bool.isRequired,
+  get: PropTypes.string.isRequired,
 };
 
 export default Header;
