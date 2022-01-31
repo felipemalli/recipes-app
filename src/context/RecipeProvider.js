@@ -7,7 +7,7 @@ function RecipeProvider({ children }) {
   const [mainDrinks, setMainDrinks] = useState([]);
   const [mainFilter, setMainFilter] = useState('');
   const [categoryFilter, setCategoryFilter] = useState([]);
-  // const [searchBarFilter, setSearchBarFilter] = useState([]);
+  const [searchBarFilter, setSearchBarFilter] = useState([]);
   const [enableSearch, setEnableSearch] = useState(false);
 
   const contextValue = {
@@ -19,6 +19,8 @@ function RecipeProvider({ children }) {
     setMainFilter,
     categoryFilter,
     setCategoryFilter,
+    searchBarFilter,
+    setSearchBarFilter,
     enableSearch,
     setEnableSearch,
   };

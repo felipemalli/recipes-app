@@ -1,69 +1,77 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import RecipeContext from '../context/RecipeContext';
+import requestAPI from '../services/requestAPI';
 
 function SearchBar() {
-  const contextValue = useContext(RecipeContext);
+  const { setSearchBarFilter, setMainFilter } = useContext(RecipeContext);
 
-  // const [radioInput, setRadioInput] = useState([]);
+  const [radioInput, setRadioInput] = useState([]);
+  const [searchBarInput, setSearchBarInput] = useState([]);
 
-  // const handleChange = ({ target }) => {
-  // }
-
-  const onChangeValue = ({ target }) => {
-    if (target.value === 'ingredient') contextValue.setFoods();
+  const handleChange = ({ target }) => {
+    setSearchBarInput(target);
     console.log(target.value);
-    //   // https://www.themealdb.com/api/json/v1/1/filter.php?i={ingrediente}
-    // } else if (event.target.value ===) {
-    //   console.log(event.target.value);
-    // } else {
-    //   console.log(event.target.value);
-    // }
   };
 
-  const onChangeInput = (event) => {
-    console.log(event.target.value);
+  const onChangeValue = ({ target }) => {
+    setRadioInput(target);
+    console.log(target.value);
   };
 
   const handleClick = (event) => {
-    console.log(event.target.value);
+    const conditionName = 'name';
+    const conditionIngredient = 'ingredient';
+    const conditionFirstLetter = 'first-letter';
+
+    if (searchBarInput && radioInput && event) {
+      if (radioInput === conditionName) {
+        requestAPI.getMeals.byNameOrFirst12(searchBarInput);
+      } else if
+      (radioInput === conditionIngredient) {
+        requestAPI.getMeals.byIngredient(searchBarInput);
+      } else if
+      (radioInput === conditionFirstLetter) {
+        requestAPI.getMeals.byFirstLetter(searchBarInput);
+      }
+    }
+
+    console.log(event);
+    console.log(searchBarInput);
+    console.log(radioInput);
+    setMainFilter('searchBar');
+    setSearchBarFilter();
   };
-
-  // contextValue.setFoods()
-
-  // contextValue.foods
 
   return (
     <section>
       <input
         type="text"
         data-testid="search-input"
-        onChange={ onChangeInput }
+        onChange={ handleChange }
       />
       <div onChange={ onChangeValue }>
         <input
           type="radio"
           data-testid="ingredient-search-radio"
           value="ingredient"
-          name="gender"
         />
         Ingredient
         <input
           type="radio"
           data-testid="name-search-radio"
           value="name"
-          name="gender"
         />
         Name
         <input
           type="radio"
           data-testid="first-letter-search-radio"
           value="first-letter"
-          name="gender"
         />
         First letter
         <button
           type="button"
           data-testid="exec-search-btn"
+          value="teste"
           onClick={ () => handleClick() }
         >
           Search

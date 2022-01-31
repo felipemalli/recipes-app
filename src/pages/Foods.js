@@ -11,7 +11,7 @@ function Foods() {
   const [firstMeals, setFirstMeals] = useState([]);
   const [firstCategories, setfirstCategories] = useState([]);
   const
-    { mainMeals, setMainMeals, mainFilter, categoryFilter,
+    { mainMeals, setMainMeals, mainFilter, categoryFilter, searchBarFilter,
     } = useContext(RecipeContext);
 
   useEffect(() => {
@@ -26,14 +26,14 @@ function Foods() {
 
   useEffect(() => {
     if (mainFilter === '') setMainMeals(initialMeals);
-    if (mainFilter === 'category') setMainMeals(categoryFilter.meals);
-    if (mainFilter === 'searchBar') setMainMeals();
-  }, [firstMeals, categoryFilter, mainFilter]);
+    if (mainFilter === 'category') setMainMeals(categoryFilter);
+    if (mainFilter === 'searchBar') setMainMeals(searchBarFilter);
+  }, [firstMeals, categoryFilter, mainFilter, searchBarFilter]);
 
   return (
     <div>
       <Header title="Foods" haveSearch />
-      <InitialCategory categories={ initialCategories } get="getMeals" />
+      <InitialCategory categories={ initialCategories } get="getMeals" type="meals" />
       {mainMeals.map(({ idMeal, strMealThumb, strMeal }, i) => (<RecipeCard
         key={ idMeal }
         img={ strMealThumb }
