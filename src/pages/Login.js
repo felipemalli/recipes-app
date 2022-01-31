@@ -16,8 +16,9 @@ function Login({ history }) {
   };
 
   const handleClick = () => {
-    local.set.mealsToken();
-    local.set.cocktailsToken();
+    const TOKEN = 1;
+    local.set.mealsToken(TOKEN);
+    local.set.cocktailsToken(TOKEN);
     local.set.user(email);
 
     history.push('/foods');
