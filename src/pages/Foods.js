@@ -11,7 +11,8 @@ function Foods() {
   const [firstMeals, setFirstMeals] = useState([]);
   const [firstCategories, setfirstCategories] = useState([]);
   const
-    { mainMeals, setMainMeals, mainFilter, categoryFilter, searchBarFilter, enableSearch,
+    { mainMeals, setMainMeals, mainFilter,
+      categoryFilter, searchBarFilter, enableSearch,
     } = useContext(RecipeContext);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ function Foods() {
         get="getMeals"
         type="meals"
       />}
-      {mainMeals && mainMeals
+      {mainMeals ? mainMeals
         .filter((_, i) => i < INITIAL_MEAL_LIMIT)
         .map(({ idMeal, strMealThumb, strMeal }, i) => (
           <RecipeCard
@@ -47,7 +48,7 @@ function Foods() {
             index={ i }
             id={ idMeal }
             type="foods"
-          />))}
+          />)) : global.alert('Sorry, we haven\'t found any recipes for these filters.')}
       <Footer />
     </div>
   );

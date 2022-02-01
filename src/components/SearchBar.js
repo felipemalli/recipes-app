@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';

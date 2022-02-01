@@ -11,7 +11,8 @@ function Drinks() {
   const [firstDrinks, setFirstDrinks] = useState([]);
   const [firstCategories, setfirstCategories] = useState([]);
   const
-    { mainDrinks, setMainDrinks, mainFilter, categoryFilter, searchBarFilter,
+    { mainDrinks, setMainDrinks, mainFilter,
+      categoryFilter, searchBarFilter, enableSearch,
     } = useContext(RecipeContext);
 
   useEffect(() => {
@@ -32,8 +33,12 @@ function Drinks() {
   return (
     <div>
       <Header title="Drinks" haveSearch get="getDrinks" />
-      <InitialCategory categories={ initialCategories } get="getDrinks" type="drinks" />
-      {mainDrinks && mainDrinks
+      {!enableSearch && <InitialCategory
+        categories={ initialCategories }
+        get="getDrinks"
+        type="drinks"
+      />}
+      {mainDrinks ? mainDrinks
         .filter((_, i) => i < INITIAL_DRINK_LIMIT)
         .map(({ idDrink, strDrinkThumb, strDrink }, i) => (
           <RecipeCard
@@ -43,7 +48,7 @@ function Drinks() {
             index={ i }
             id={ idDrink }
             type="drinks"
-          />))}
+          />)) : global.alert('Sorry, we haven\'t found any recipes for these filters.')}
       <Footer />
     </div>
   );
