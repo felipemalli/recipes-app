@@ -6,16 +6,9 @@ import local from '../services/handleLocal';
 
 function Profile() {
   const dataProfile = local.get.user();
-  /* const dataLocal = local.set; */
-
   const { email } = dataProfile;
-  /* const { mealsToken, user } = dataLocal; */
 
-  const resetLocal = () => {
-    localStorage.removeItem('mealsToken');
-    localStorage.removeItem('cocktailsToken');
-    localStorage.removeItem('user');
-  };
+  const resetLocal = () => localStorage.clear();
 
   return (
     <div>

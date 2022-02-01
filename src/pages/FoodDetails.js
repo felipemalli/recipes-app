@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { /* useState, useEffect  */} from 'react';
 // import requestAPI from '../services/requestAPI';
 
 function FoodDetails() {
-  // const [details, setDetails] = useState([]);
+/*   const [details, setDetails] = useState([]);
+
+  function requestApiFood() {
+    const detailsFood = requestAPI[get].detailsFood();
+  }
 
   useEffect(() => {
-    requestapifood();
-  }, []);
-
-  /*   function requestApiFood() {
-    const detailsFood = requestAPI[get].detailsFood();
-  } */
+    requestApiFood();
+  }, []); */
 
   return (
     <div>

@@ -11,7 +11,7 @@ function ExploreDrinks({ history }) {
         <button
           type="button"
           data-testid="explore-by-ingredient"
-          onClick={ () => history.push('/explore/foods/ingredients') }
+          onClick={ () => history.push('/explore/drinks/ingredients') }
         >
           By Ingredient
         </button>
