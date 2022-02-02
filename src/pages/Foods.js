@@ -59,4 +59,9 @@ function Foods() {
   );
 }
 
+// export default Foods;
+//     </div>
+//   );
+// }
+
 export default Foods;

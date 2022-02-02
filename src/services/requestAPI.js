@@ -19,6 +19,8 @@ const requestAPI = {
     infoById: (info) => fetchHook('https://www.themealdb.com/api/json/v1/1/lookup.php?i=', info),
 
     infoRandom: () => fetchHook('https://www.themealdb.com/api/json/v1/1/random.php'),
+
+    byIngredientMeals: () => fetchHook('https://www.themealdb.com/api/json/v1/1/list.php?i=list'),
   },
 
   getDrinks: {

@@ -5,7 +5,7 @@ import RecipeContext from '../context/RecipeContext';
 import Profile from '../images/profileIcon.svg';
 import Search from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
-import '../style/header.css';
+import Headerr from '../style/header';
 
 function Header(props) {
   const { title, haveSearch, get } = props;
@@ -13,7 +13,7 @@ function Header(props) {
   const { enableSearch, setEnableSearch } = useContext(RecipeContext);
 
   return (
-    <header className="header">
+    <Headerr className="header">
       <Link to="/profile">
         <img
           src={ Profile }
@@ -32,7 +32,7 @@ function Header(props) {
         )
       }
       { enableSearch && <SearchBar get={ get } /> }
-    </header>
+    </Headerr>
   );
 }
 
