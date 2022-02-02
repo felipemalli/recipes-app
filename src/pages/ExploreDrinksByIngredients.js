@@ -6,7 +6,7 @@ function ExploreDrinksByIngredients() {
   return (
     <div>
       <Header title="Explore Ingredients" haveSearch={ false } />
-      <h1>ExploreDrinksByIngredients</h1>
+      <h1>Explore Ingredients</h1>
       <Footer />
     </div>
   );

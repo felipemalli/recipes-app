@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import local from '../services/handleLocal';
-// import { sendEmail } from '../redux/actions';
-// import HeaderFoods from '../components/Headers/HeaderFoods';
-// import SearchBar from '../components/SearchBar';
 
 function Login({ history }) {
   const [email, setEmail] = useState({ email: '' });
@@ -26,7 +23,6 @@ function Login({ history }) {
 
   return (
     <main>
-      {/* <SearchBar /> */}
       <form>
         <label htmlFor="email-input">
           Email
