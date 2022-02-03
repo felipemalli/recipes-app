@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 import requestAPI from '../services/requestAPI';
-import '../style/buttonsFood.css';
+import Nav from '../style/buttonsFood';
 
 function InitialCategory(props) {
   const { categories, get, type } = props;
@@ -34,7 +34,7 @@ function InitialCategory(props) {
   };
 
   return (
-    <nav className="nav-buttons">
+    <Nav>
       <button
         type="button"
         onClick={ resetFilter }
@@ -55,7 +55,7 @@ function InitialCategory(props) {
           {strCategory}
         </button>
       ))}
-    </nav>
+    </Nav>
   );
 }
 

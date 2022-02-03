@@ -1,22 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ingredientsArray from '../hooks/ingredientsArray';
 
 export default function DetailsIngredients(props) {
   const { details } = props;
 
-  const ingredientsArray = () => {
-    const ingredients = [];
-    const MAX = 20;
-    for (let i = 1; i <= MAX; i += 1) {
-      ingredients
-        .push(`${details[`strIngredient${[i]}`]} - ${details[`strMeasure${[i]}`]}`);
-    }
-    return ingredients.filter((i) => i !== ' -  ' && i !== ' - ');
-  };
+  const arrayOfIngredients = ingredientsArray(details);
 
   return (
     <ul>
-      {details.length !== 0 && ingredientsArray().map((i) => (
+      {arrayOfIngredients.map((i) => (
         <li key={ i } data-testid={ `${i}-ingredient-name-and-measure` }>{i}</li>
       ))}
     </ul>
@@ -24,5 +17,7 @@ export default function DetailsIngredients(props) {
 }
 
 DetailsIngredients.propTypes = {
-  details: PropTypes.arrayOf(PropTypes.object).isRequired,
+  details: PropTypes.shape({
+    strArea: PropTypes.string,
+  }).isRequired,
 };

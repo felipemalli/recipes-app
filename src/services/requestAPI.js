@@ -6,7 +6,7 @@ const requestAPI = {
 
     byNameOrFirst12: (info) => fetchHook('https://www.themealdb.com/api/json/v1/1/search.php?s=', info),
 
-    byIngredient: (info) => fetchHook('https://www.themealdb.com/api/json/v1/1/list.php?i=', info),
+    byIngredient: (info) => fetchHook('https://www.themealdb.com/api/json/v1/1/filter.php?i=', info),
 
     byFirstLetter: (info) => fetchHook('https://www.themealdb.com/api/json/v1/1/search.php?f=', info),
 
@@ -37,6 +37,8 @@ const requestAPI = {
     infoById: (info) => fetchHook('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=', info),
 
     infoRandom: () => fetchHook('https://www.thecocktaildb.com/api/json/v1/1/random.php'),
+
+    byIngredientDrinks: () => fetchHook('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'),
   },
 };
 

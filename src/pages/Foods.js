@@ -7,6 +7,7 @@ import RecipeCard from '../components/RecipeCard';
 import requestAPI from '../services/requestAPI';
 import InitialCategory from '../components/InitialCategory';
 import RecipeContext from '../context/RecipeContext';
+import Section from '../style/sectionFood';
 
 function Foods() {
   const [firstMeals, setFirstMeals] = useState([]);
@@ -32,7 +33,7 @@ function Foods() {
   const initialCategories = firstCategories.filter((_, i) => i < INITIAL_CATEGORY_LIMIT);
 
   return (
-    <div>
+    <main>
       {mainMeals.length === 1 && <Redirect
         to={ { pathname: `/foods/${mainMeals[0].idMeal}` } }
       />}
@@ -42,26 +43,24 @@ function Foods() {
         get="getMeals"
         type="meals"
       />}
-      {mainMeals ? mainMeals
-        .filter((_, i) => i < INITIAL_MEAL_LIMIT)
-        .map(({ idMeal, strMealThumb, strMeal }, i) => (
-          <RecipeCard
-            key={ idMeal }
-            img={ strMealThumb }
-            name={ strMeal }
-            index={ i }
-            id={ idMeal }
-            type="foods"
-            category=""
-          />)) : global.alert('Sorry, we haven\'t found any recipes for these filters.')}
+      <Section>
+        {mainMeals ? mainMeals
+          .filter((_, i) => i < INITIAL_MEAL_LIMIT)
+          .map(({ idMeal, strMealThumb, strMeal }, i) => (
+            <RecipeCard
+              key={ idMeal }
+              img={ strMealThumb }
+              name={ strMeal }
+              index={ i }
+              id={ idMeal }
+              type="foods"
+              category=""
+            />))
+          : global.alert('Sorry, we haven\'t found any recipes for these filters.')}
+      </Section>
       <Footer />
-    </div>
+    </main>
   );
 }
-
-// export default Foods;
-//     </div>
-//   );
-// }
 
 export default Foods;

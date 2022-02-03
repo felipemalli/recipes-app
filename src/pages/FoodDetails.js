@@ -6,7 +6,10 @@ import requestAPI from '../services/requestAPI';
 import DetailsVideo from '../components/DetailsVideo';
 import RecipeCard from '../components/RecipeCard';
 import DetailsIngredients from '../components/DetailsIngredients';
-// import FavoriteButton from '../components/FavoriteButton';
+import FavoriteButton from '../components/FavoriteButton';
+import ShareButton from '../components/ShareButton';
+import ingredientsArray from '../hooks/ingredientsArray';
+import updateLocalInProgress from '../hooks/updateLocalInProgress';
 
 function FoodDetails(props) {
   const [details, setDetails] = useState([]);
@@ -34,12 +37,16 @@ function FoodDetails(props) {
       <section>
         <h1 data-testid="recipe-title">{ strMeal }</h1>
         <span data-testid="recipe-category">{ strCategory }</span>
-        <button type="button" data-testid="share-btn">Compartilhar</button>
-        {/* <FavoriteButton details={ details } /> */}
+        <ShareButton />
+        { details.length !== 0 && <FavoriteButton
+          details={ details }
+          type="food"
+          idType="idMeal"
+        /> }
       </section>
       <section>
         <h2>Ingredients</h2>
-        <DetailsIngredients details={ details } />
+        { details.length !== 0 && <DetailsIngredients details={ details } /> }
       </section>
       <section>
         <h2>Instructions</h2>
@@ -67,12 +74,32 @@ function FoodDetails(props) {
               category={ drinkCategory }
             />))}
       </section>
-      <Link to="/profile">
-        <button type="button" data-testid="start-recipe-btn">Start Recipe</button>
+      <Link to={ `/foods/${recipeId}/in-progress` }>
+        <button
+          type="button"
+          data-testid="start-recipe-btn"
+          onClick={ () => updateLocalInProgress('food',
+            recipeId, ingredientsArray(details)) }
+        >
+          Start Recipe
+        </button>
       </Link>
     </main>
   );
 }
+
+// a chave inProgressRecipes deve conter a seguinte estrutura:
+// {
+//     cocktails: {
+//         id-da-bebida1: [lista-de-ingredientes-utilizados1],
+//         id-da-bebida2: [lista-de-ingredientes-utilizados2]
+//         ...
+//     },
+//     meals: {
+//         id-da-comida: [lista-de-ingredientes-utilizados],
+//         ...
+//     }
+// }
 
 FoodDetails.propTypes = {
   match: PropTypes.shape({

@@ -4,23 +4,30 @@ import Header from '../components/Header';
 import requestAPI from '../services/requestAPI';
 
 function ExploreFoodsByIngredients() {
-  const [data, setData] = useState([]);
+  const [dataMeals, setDataMeals] = useState([]);
 
   useEffect(() => {
     requestAPI.getMeals
-      .byIngredientMeals().then((v) => setData(v.meals));
+      .byIngredientMeals()
+      .then((data) => setDataMeals(data.meals));
   }, []);
-  console.log(data);
+
+  const INITIAL_INGREDIENTS_LIMIT = 12;
+  const mealsIngredients = dataMeals.filter((_, i) => i < INITIAL_INGREDIENTS_LIMIT);
+
   return (
     <div>
       <Header title="Explore Ingredients" haveSearch={ false } />
-      {data.map((idIngredient, strIngredient) => (
-        <div key={ idIngredient }>
-          <p>{ strIngredient }</p>
-          {/* <img src={ v.strMealThumb } alt="test" /> */}
+      {mealsIngredients.map((v, index) => (
+        <div key={ v.idIngredient } data-testid={ `${index}-ingredient-card"` }>
+          <p data-testid={ `${index}-card-name` }>{v.strIngredient}</p>
+          <img
+            src={ `https://www.themealdb.com/images/ingredients/${v.strIngredient}.png` }
+            alt={ v.strIngredient }
+            data-testid={ `${index}-card-img` }
+          />
         </div>
       ))}
-      <h1>fadfadfadfaf</h1>
       <Footer />
     </div>
   );

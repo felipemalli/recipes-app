@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Headerr = styled.header`
+const ContainerHeader = styled.header`
   align-items: center;
   background-color: #ff5003;
   display: flex;
@@ -19,4 +19,4 @@ const Headerr = styled.header`
   }
 `;
 
-export default Headerr;
+export default ContainerHeader;

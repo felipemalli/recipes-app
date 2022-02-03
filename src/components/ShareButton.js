@@ -1,27 +1,28 @@
-// import React from 'react';
-// import shareIcon from '../images/shareIcon.svg';
+import React, { useState } from 'react';
+import shareIcon from '../images/shareIcon.svg';
 
-// function ShareButton() {
-//   const [shared, setShared] = useState(false);
+function ShareButton() {
+  const [copyUrl, setCopyUrl] = useState(false);
+  const TWO = 2000;
+  setTimeout(() => setCopyUrl(false), TWO);
 
-//   function handleClick() {
-//     console.log();
-//   }
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={ () => navigator.clipboard.writeText(window.location.href)
+          .then(() => setCopyUrl(true))
+          .then(() => setTimeout(() => setCopyUrl(false), TWO)) }
+        data-testid="share-btn"
+      >
+        <img
+          src={ shareIcon }
+          alt="ShareButton"
+        />
+      </button>
+      {copyUrl && <span>Link copied!</span>}
+    </div>
+  );
+}
 
-//   return (
-//     <div>
-//       <button
-//         type="button"
-//         onClick={ () => handleClick() }
-//         data-testid="share-btn"
-//       >
-//         <img
-//           src={ shareIcon }
-//           alt="ShareButton"S
-//         />
-//       </button>
-//     </div>
-//   );
-// }
-
-// export default ShareButton;
+export default ShareButton;
