@@ -19,13 +19,13 @@ function ExploreDrinksByIngredients() {
     <div>
       <Header title="Explore Ingredients" haveSearch={ false } />
       {drinksIngredients.map((v, index) => (
-        <div key={ v.strIngredient1 } data-testid={ `${index}-ingredient-card"` }>
-          <p data-testid={ `${index}-card-name` }>{v.strIngredient1}</p>
+        <div key={ v.strIngredient1 } data-testid={ `${index}-ingredient-card` }>
           <img
-            src={ `https://www.themealdb.com/images/ingredients/${v.strIngredient1}.png` }
+            src={ `https://www.thecocktaildb.com/images/ingredients/${v.strIngredient1}-Small.png` }
             alt={ v.strIngredient }
             data-testid={ `${index}-card-img` }
           />
+          <p data-testid={ `${index}-card-name` }>{v.strIngredient1}</p>
         </div>
       ))}
       <h1>Explore Ingredients</h1>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import local from '../services/handleLocal';
+import * as C from '../style/login';
 
 function Login({ history }) {
   const [email, setEmail] = useState({ email: '' });
@@ -22,8 +23,8 @@ function Login({ history }) {
   };
 
   return (
-    <main>
-      <form>
+    <C.Container>
+      <C.Form>
         <label htmlFor="email-input">
           Email
           <input
@@ -53,8 +54,8 @@ function Login({ history }) {
         >
           Entrar
         </button>
-      </form>
-    </main>
+      </C.Form>
+    </C.Container>
   );
 }
 

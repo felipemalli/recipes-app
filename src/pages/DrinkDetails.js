@@ -7,6 +7,7 @@ import RecipeCard from '../components/RecipeCard';
 import DetailsIngredients from '../components/DetailsIngredients';
 import FavoriteButton from '../components/FavoriteButton';
 import ShareButton from '../components/ShareButton';
+import StartRecipeButton from '../components/StartRecipeButton';
 
 function DrinkDetails(props) {
   const [details, setDetails] = useState([]);
@@ -65,7 +66,7 @@ function DrinkDetails(props) {
             />))}
       </section>
       <Link to={ `/drinks/${recipeId}/in-progress` }>
-        <button type="button" data-testid="start-recipe-btn">Start Recipe</button>
+        <StartRecipeButton />
       </Link>
     </main>
   );

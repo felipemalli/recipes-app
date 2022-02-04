@@ -8,8 +8,9 @@ import RecipeCard from '../components/RecipeCard';
 import DetailsIngredients from '../components/DetailsIngredients';
 import FavoriteButton from '../components/FavoriteButton';
 import ShareButton from '../components/ShareButton';
-import ingredientsArray from '../hooks/ingredientsArray';
-import updateLocalInProgress from '../hooks/updateLocalInProgress';
+import StartRecipeButton from '../components/StartRecipeButton';
+import { Section, MainContainer } from '../style/recommended';
+// import local from '../services/handleLocal';
 
 function FoodDetails(props) {
   const [details, setDetails] = useState([]);
@@ -26,8 +27,25 @@ function FoodDetails(props) {
 
   const RECOMMENDATION_LIMIT = 6;
 
+  function recipesCards() {
+    return (
+      recommendations && recommendations
+        .filter((_, i) => i < RECOMMENDATION_LIMIT)
+        .map(({ idDrink, strDrinkThumb, strDrink, strCategory: drinkCategory }, i) => (
+          <RecipeCard
+            key={ idDrink }
+            img={ strDrinkThumb }
+            name={ strDrink }
+            index={ i }
+            id={ idDrink }
+            type="foods"
+            category={ drinkCategory }
+          />))
+    );
+  }
+
   return (
-    <main>
+    <MainContainer>
       <img
         src={ strMealThumb }
         alt={ strMeal }
@@ -59,32 +77,26 @@ function FoodDetails(props) {
           url={ strYoutube }
         />}
       </section>
-      <section>
-        <h2>Recommended</h2>
-        {recommendations && recommendations
-          .filter((_, i) => i < RECOMMENDATION_LIMIT)
-          .map(({ idDrink, strDrinkThumb, strDrink, strCategory: drinkCategory }, i) => (
-            <RecipeCard
-              key={ idDrink }
-              img={ strDrinkThumb }
-              name={ strDrink }
-              index={ i }
-              id={ idDrink }
-              type="foods"
-              category={ drinkCategory }
-            />))}
-      </section>
+      <Section>
+        <div>
+          <h2>Recommended</h2>
+        </div>
+        <div className="cardFoods">
+          { recipesCards() }
+        </div>
+      </Section>
       <Link to={ `/foods/${recipeId}/in-progress` }>
-        <button
+        <StartRecipeButton />
+        {/* <button
           type="button"
           data-testid="start-recipe-btn"
           onClick={ () => updateLocalInProgress('food',
             recipeId, ingredientsArray(details)) }
         >
           Start Recipe
-        </button>
+        </button> */}
       </Link>
-    </main>
+    </MainContainer>
   );
 }
 
