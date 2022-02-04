@@ -35,6 +35,6 @@ export const ButtonStart = styled.button`
   color : white;
   height: 35px;
   width: 116px;
-  border-radius: 7px;
+  border-radius: 6px;
   border: none;
 `;
