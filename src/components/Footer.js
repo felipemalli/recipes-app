@@ -3,20 +3,26 @@ import { Link } from 'react-router-dom';
 import Drink from '../images/drinkIcon.svg';
 import Explore from '../images/exploreIcon.svg';
 import Food from '../images/mealIcon.svg';
+import ContainerFooter from '../style/footer';
 
 function Footer() {
   return (
-    <div data-testid="footer">
-      <Link to="/drinks" data-testid="drinks-bottom-btn">
-        <img src={ Drink } alt="Drink" />
-      </Link>
-      <Link to="/explore" data-testid="explore-bottom-btn">
-        <img src={ Explore } alt="Explore" />
-      </Link>
-      <Link to="/foods" data-testid="food-bottom-btn">
-        <img src={ Food } alt="Food" />
-      </Link>
-    </div>
+    <ContainerFooter data-testid="footer">
+      <div className="links-footer">
+        <Link to="/drinks">
+          <img src={ Drink } alt="Drink" data-testid="drinks-bottom-btn" />
+        </Link>
+        <Link to="/explore">
+          <img src={ Explore } alt="Explore" data-testid="explore-bottom-btn" />
+        </Link>
+        <Link to="/foods">
+          <img src={ Food } alt="Food" data-testid="food-bottom-btn" />
+        </Link>
+      </div>
+      <div className="copyright">
+        <p> © 2022 Grupo 26 Technologies</p>
+      </div>
+    </ContainerFooter>
   );
 }
 

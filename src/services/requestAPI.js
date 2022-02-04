@@ -16,7 +16,11 @@ const requestAPI = {
 
     nationalities: () => fetchHook('https://www.themealdb.com/api/json/v1/1/list.php?a=list'),
 
-    detailsFood: () => fetchHook('https://www.themealdb.com/api/json/v1/1/random.php'),
+    infoById: (info) => fetchHook('https://www.themealdb.com/api/json/v1/1/lookup.php?i=', info),
+
+    infoRandom: () => fetchHook('https://www.themealdb.com/api/json/v1/1/random.php'),
+
+    byIngredientMeals: () => fetchHook('https://www.themealdb.com/api/json/v1/1/list.php?i=list'),
   },
 
   getDrinks: {
@@ -30,7 +34,11 @@ const requestAPI = {
 
     byCategory: (info) => fetchHook('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=', info),
 
-    detailsDrinks: () => fetchHook('https://www.thecocktaildb.com/api/json/v1/1/random.php'),
+    infoById: (info) => fetchHook('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=', info),
+
+    infoRandom: () => fetchHook('https://www.thecocktaildb.com/api/json/v1/1/random.php'),
+
+    byIngredientDrinks: () => fetchHook('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'),
   },
 };
 

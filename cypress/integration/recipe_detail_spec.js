@@ -136,7 +136,7 @@ describe('35 - Desenvolva a tela de forma que contenha uma imagem da receita, o 
     cy.get('[data-testid="2-ingredient-name-and-measure"]').contains('1 oz');
 
     cy.get('[data-testid="instructions"]').contains(oneDrink.drinks[0].strInstructions);
-    
+
     cy.get('[data-testid*="recomendation-card"]').should('exist');
   });
 });
@@ -167,7 +167,7 @@ describe('36 - Implemente as recomendações, para receitas de comida, a recomen
   });
 });
 
-describe('37 - Implemente os cards de recomendação, onde serão 6 cards, mas mostrando apenas 2 e o scroll é horizontal, similar a um `carousel`', () => {
+describe.only('37 - Implemente os cards de recomendação, onde serão 6 cards, mas mostrando apenas 2 e o scroll é horizontal, similar a um `carousel`', () => {
   it('Verifica se existem todas as recomendações na tela de detalhes de uma comida', () => {
     cy.visit('http://localhost:3000/foods/52771', {
       onBeforeLoad(win) {
@@ -249,7 +249,7 @@ describe('39 - Implemente a solução de forma que caso a receita já tenha sido
       onBeforeLoad(win) {
         const doneRecipes = [{
           "id": "52771",
-          "type": "comida",
+          "type": "food",
           "nationality": "Italian",
           "category": "Vegetarian",
           "alcoholicOrNot": "",
@@ -271,7 +271,7 @@ describe('39 - Implemente a solução de forma que caso a receita já tenha sido
       onBeforeLoad(win) {
         const doneRecipes = [{
           "id": "178319",
-          "type": "bebida",
+          "type": "drink",
           "nationality": "",
           "category": "Cocktail",
           "alcoholicOrNot": "Alcoholic",
@@ -390,7 +390,7 @@ describe('43 - Implemente a solução de forma que, ao clicar no botão de compa
     cy.visit('http://localhost:3000/drinks/178319', {
       onBeforeLoad(win) {
         win.fetch = fetchMock;
-        
+
         cy.stub(win.navigator.clipboard, 'writeText').resolves('URL').as('clipboard');
       },
     });
@@ -407,7 +407,7 @@ describe('44 - Implemente o ícone do coração (favorito) de maneira que, deve 
       onBeforeLoad(win) {
         const favoriteRecipes = [{
           "id": "52771",
-          "type": "comida",
+          "type": "food",
           "nationality": "Italian",
           "category": "Vegetarian",
           "alcoholicOrNot": "",
@@ -441,7 +441,7 @@ describe('44 - Implemente o ícone do coração (favorito) de maneira que, deve 
       onBeforeLoad(win) {
         const favoriteRecipes = [{
           "id": "178319",
-          "type": "bebida",
+          "type": "drink",
           "nationality": "",
           "category": "Cocktail",
           "alcoholicOrNot": "Alcoholic",
@@ -495,9 +495,10 @@ describe('45 - Implemente a lógica no botão de favoritar, caso seja clicado, o
       onBeforeLoad(win) {
         const favoriteRecipes = [{
           "id": "52771",
-          "type": "comida",
+          "type": "food",
           "nationality": "Italian",
           "category": "Vegetarian",
+          "alcoholicOrNot": "",
           "name": "Spicy Arrabiata Penne",
           "image": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
         }];
@@ -540,7 +541,7 @@ describe('45 - Implemente a lógica no botão de favoritar, caso seja clicado, o
       onBeforeLoad(win) {
         const favoriteRecipes = [{
           "id": "178319",
-          "type": "bebida",
+          "type": "drink",
           "category": "Cocktail",
           "alcoholicOrNot": "Alcoholic",
           "name": "Aquamarine",

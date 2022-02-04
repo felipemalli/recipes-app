@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
@@ -9,7 +10,7 @@ import RecipeContext from '../context/RecipeContext';
 
 function Drinks() {
   const [firstDrinks, setFirstDrinks] = useState([]);
-  const [firstCategories, setfirstCategories] = useState([]);
+  const [firstCategories, setFirstCategories] = useState([]);
   const
     { mainDrinks, setMainDrinks, mainFilter,
       categoryFilter, searchBarFilter, enableSearch,
@@ -17,7 +18,7 @@ function Drinks() {
 
   useEffect(() => {
     requestAPI.getDrinks.byNameOrFirst12().then((data) => setFirstDrinks(data.drinks));
-    requestAPI.getDrinks.categories().then((data) => setfirstCategories(data.drinks));
+    requestAPI.getDrinks.categories().then((data) => setFirstCategories(data.drinks));
   }, []);
 
   useEffect(() => {
@@ -32,6 +33,9 @@ function Drinks() {
 
   return (
     <div>
+      {mainDrinks.length === 1 && <Redirect
+        to={ { pathname: `/drinks/${mainDrinks[0].idDrink}` } }
+      />}
       <Header title="Drinks" haveSearch get="getDrinks" />
       {!enableSearch && <InitialCategory
         categories={ initialCategories }
@@ -48,6 +52,7 @@ function Drinks() {
             index={ i }
             id={ idDrink }
             type="drinks"
+            category=""
           />)) : global.alert('Sorry, we haven\'t found any recipes for these filters.')}
       <Footer />
     </div>
