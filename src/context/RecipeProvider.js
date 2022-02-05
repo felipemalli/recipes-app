@@ -9,7 +9,7 @@ function RecipeProvider({ children }) {
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [searchBarFilter, setSearchBarFilter] = useState([]);
   const [enableSearch, setEnableSearch] = useState(false);
-  const [valueIngredientMeals, setValueIngredientMeals] = useState('');
+  const [valueIngredientMeals, setValueIngredientMeals] = useState('test');
 
   const contextValue = {
     mainMeals,

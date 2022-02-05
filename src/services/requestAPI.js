@@ -12,6 +12,8 @@ const requestAPI = {
 
     byCategory: (info) => fetchHook('https://www.themealdb.com/api/json/v1/1/filter.php?c=', info),
 
+    byNationalityAll: () => fetchHook('https://www.themealdb.com/api/json/v1/1/list.php?a=list'),
+
     byNationality: (info) => fetchHook('https://www.themealdb.com/api/json/v1/1/filter.php?a=', info),
 
     nationalities: () => fetchHook('https://www.themealdb.com/api/json/v1/1/list.php?a=list'),
