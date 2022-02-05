@@ -3,9 +3,8 @@ import styled from 'styled-components';
 const CardFoods = styled.div`
   display: flex;
   flex-wrap: wrap;
-  height: 100px;
+  height: 150px;
   width: 150px;
-  border: 1px solid red;
   margin: 5px 10px;
   cursor: pointer;
   align-items: center;
@@ -14,16 +13,16 @@ const CardFoods = styled.div`
   div {
     display: flex;
     flex-direction: column;
-    border: 3px solid blue;
     width: 100%;
-    height: 100px;
+    height: 150px;
     text-align: center;
   }
 
   img {
     width: 100%;
-    height: 50px;
+    height: 90px;
     object-fit: cover;
+    border-radius: 5px;
   }
 
   h3 {
