@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import local from '../services/handleLocal';
 import * as C from '../style/login';
 
-function Login({ history }) {
+function Login() {
   const [email, setEmail] = useState({ email: '' });
   const [password, setPassword] = useState('');
+  const { push } = useHistory();
 
   const validateForms = () => {
     const minLength = 6;
@@ -19,7 +21,7 @@ function Login({ history }) {
     local.set.cocktailsToken(TOKEN);
     local.set.user(email);
 
-    history.push('/foods');
+    push('/foods');
   };
 
   return (

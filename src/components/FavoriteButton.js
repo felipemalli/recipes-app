@@ -58,12 +58,12 @@ export default function FavoriteButton(props) {
   return (
     <button
       type="button"
-      data-testid="favorite-btn"
       onClick={ handleClick }
     >
       <img
         src={ favorite ? blackHeartIcon : whiteHeartIcon }
         alt="FavoriteButton"
+        data-testid="favorite-btn"
       />
     </button>
   );

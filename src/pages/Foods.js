@@ -34,7 +34,7 @@ function Foods() {
 
   return (
     <main>
-      {mainMeals.length === 1 && <Redirect
+      {mainMeals && mainMeals.length === 1 && <Redirect
         to={ { pathname: `/foods/${mainMeals[0].idMeal}` } }
       />}
       <Header title="Foods" haveSearch get="getMeals" />

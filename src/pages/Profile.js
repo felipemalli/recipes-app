@@ -1,30 +1,30 @@
-import React, {/*  useEffect, useState */ } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-// import local from '../services/handleLocal';
+import local from '../services/handleLocal';
 
 function Profile() {
-  // const [email/* , setEmaill */] = useState('teste@gmail.com');
-  // const dataProfile = local.get.user();
-  // const { email } = dataProfile;
-  const resetLocal = () => localStorage.clear();
+  const [emailStore, setEmailStore] = useState('');
 
-  /*   async function setEmail() {
-    const dataProfile = await local.get.user();
-    setEmaill(dataProfile.email);
-  }
+  const getEmail = () => {
+    const dataProfile = local.get.user();
+    if (dataProfile) {
+      const { email } = dataProfile;
+      setEmailStore(email);
+    }
+  };
 
   useEffect(() => {
-    setEmail();
-  }, []); */
+    getEmail();
+  }, []);
+
+  const resetLocal = () => localStorage.clear();
 
   return (
     <div>
-      <Header title="Profile" haveSearch={ false } />
-
-      <h1 data-testid="profile-email">teste@gmail.com</h1>
-
+      <Header title="Profile" haveSearch={ false } get="" />
+      <h1 data-testid="profile-email">{ emailStore }</h1>
       <Link to="/done-recipes">
         <button
           type="button"

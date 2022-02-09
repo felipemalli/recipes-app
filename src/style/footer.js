@@ -5,30 +5,22 @@ const ContainerFooter = styled.footer`
     bottom: 0;
     display: flex;
     flex-flow: column wrap;
-    height: 12%;
+    height: 8vh;
     left: 0;
     position: fixed;
-    width: 100%;
+    width: 100vw;
 
     .links-footer {
       align-items: center;
-      flex-wrap: wrap;
       display: flex;
-      height: 50%;
       justify-content: space-evenly;
       width: 100%;
+      height: 8vh;
     }
 
     .links-footer img {
-      background-color: white;
       border-radius: 5px;
-    }
-
-    .copyright {
-      color: white;
-      display: flex;
-      justify-content: center;
-      width: 100%;
+      width: auto;
     }
 `;
 

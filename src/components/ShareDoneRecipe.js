@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import shareIcon from '../images/shareIcon.svg';
 
-function ShareButton() {
+function ShareDoneRecipe(props) {
+  const { id } = props;
   const [copyUrl, setCopyUrl] = useState(false);
   const TWO = 2000;
   setTimeout(() => setCopyUrl(false), TWO);
@@ -18,7 +20,7 @@ function ShareButton() {
         <img
           src={ shareIcon }
           alt="ShareButton"
-          data-testid="share-btn"
+          data-testid={ id }
         />
       </button>
       {copyUrl && <span>Link copied!</span>}
@@ -26,4 +28,8 @@ function ShareButton() {
   );
 }
 
-export default ShareButton;
+ShareDoneRecipe.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
+export default ShareDoneRecipe;

@@ -7,7 +7,7 @@ import RecipeCard from '../components/RecipeCard';
 import DetailsIngredients from '../components/DetailsIngredients';
 import FavoriteButton from '../components/FavoriteButton';
 import ShareButton from '../components/ShareButton';
-import StartRecipeButton from '../components/StartRecipeButton';
+import { ButtonStart } from '../style/foodDetails';
 
 function DrinkDetails(props) {
   const [details, setDetails] = useState([]);
@@ -55,18 +55,22 @@ function DrinkDetails(props) {
         {recommendations && recommendations
           .filter((_, i) => i < RECOMMENDATION_LIMIT)
           .map(({ idMeal, strMealThumb, strMeal, strCategory: mealCategory }, i) => (
-            <RecipeCard
-              key={ idMeal }
-              img={ strMealThumb }
-              name={ strMeal }
-              index={ i }
-              id={ idMeal }
-              type="foods"
-              category={ mealCategory }
-            />))}
+            <div key={ idMeal } data-testid={ `${i}-recomendation-card` }>
+              <RecipeCard
+                key={ idMeal }
+                img={ strMealThumb }
+                name={ strMeal }
+                index={ i }
+                id={ idMeal }
+                type="foods"
+                category={ mealCategory }
+              />
+            </div>))}
       </section>
       <Link to={ `/drinks/${recipeId}/in-progress` }>
-        <StartRecipeButton />
+        <ButtonStart type="button" data-testid="start-recipe-btn">
+          Start Recipe
+        </ButtonStart>
       </Link>
     </main>
   );

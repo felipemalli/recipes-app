@@ -19,9 +19,6 @@ function Footer() {
           <img src={ Food } alt="Food" data-testid="food-bottom-btn" />
         </Link>
       </div>
-      <div className="copyright">
-        <p> © 2022 Grupo 26 Technologies</p>
-      </div>
     </ContainerFooter>
   );
 }

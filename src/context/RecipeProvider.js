@@ -10,6 +10,7 @@ function RecipeProvider({ children }) {
   const [searchBarFilter, setSearchBarFilter] = useState([]);
   const [enableSearch, setEnableSearch] = useState(false);
   const [valueIngredientMeals, setValueIngredientMeals] = useState('test');
+  const [enableFinish, setEnableFinish] = useState(false);
 
   const contextValue = {
     mainMeals,
@@ -26,6 +27,8 @@ function RecipeProvider({ children }) {
     setEnableSearch,
     valueIngredientMeals,
     setValueIngredientMeals,
+    enableFinish,
+    setEnableFinish,
   };
 
   return (
