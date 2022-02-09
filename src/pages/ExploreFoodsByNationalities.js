@@ -42,7 +42,7 @@ function ExploreFoodsByNationalities(props) {
 
   return (
     <>
-      <Header title="Explore Nationalities" haveSearch get="" />
+      <Header title="Explore Nationalities" haveSearch get="a" />
       <select
         id="nationalities"
         value={ valueRecipe }

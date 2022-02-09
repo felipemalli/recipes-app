@@ -5,7 +5,7 @@ import DoneRecipeCard from '../components/DoneRecipeCard';
 function DoneRecipes() {
   return (
     <div>
-      <Header title="Done Recipes" haveSearch={ false } get="" />
+      <Header title="Done Recipes" haveSearch={ false } get="a" />
       <h1>DoneRecipes</h1>
       <button type="button" data-testid="filter-by-all-btn">
         All

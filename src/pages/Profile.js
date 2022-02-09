@@ -23,7 +23,7 @@ function Profile() {
 
   return (
     <div>
-      <Header title="Profile" haveSearch={ false } get="" />
+      <Header title="Profile" haveSearch={ false } get="a" />
       <h1 data-testid="profile-email">{ emailStore }</h1>
       <Link to="/done-recipes">
         <button

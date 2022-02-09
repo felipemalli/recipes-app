@@ -12,7 +12,7 @@ export default function DoneRecipeCard() {
 
   return (
     <div>
-      {allItens.length !== 0 && allItens.map((item, index) => (
+      {allItens && allItens.map((item, index) => (
         <div key={ item.name }>
           <img
             src={ item.image }
@@ -20,7 +20,11 @@ export default function DoneRecipeCard() {
             width={ 200 }
             data-testid={ `${index}-horizontal-image` }
           />
-          <ShareDoneRecipe id={ `${index}-horizontal-share-btn` } />
+          <ShareDoneRecipe
+            id={ `${index}-horizontal-share-btn` }
+            urlId={ item.id }
+            type={ item.type }
+          />
           <span data-testid={ `${index}-horizontal-top-text` }>
             {item.category
               ? `${item.alcoholicOrNot}${item.nationality} - ${item.category}`

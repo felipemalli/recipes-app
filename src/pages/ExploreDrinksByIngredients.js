@@ -17,7 +17,7 @@ function ExploreDrinksByIngredients() {
 
   return (
     <div>
-      <Header title="Explore Ingredients" haveSearch={ false } get="" />
+      <Header title="Explore Ingredients" haveSearch={ false } get="a" />
       {drinksIngredients.map((v, index) => (
         <div key={ v.strIngredient1 } data-testid={ `${index}-ingredient-card` }>
           <img

@@ -29,8 +29,11 @@ function FoodDetails(props) {
       recommendations && recommendations
         .filter((_, i) => i < RECOMMENDATION_LIMIT)
         .map(({ idDrink, strDrinkThumb, strDrink, strCategory: drinkCategory }, i) => (
-          <div key={ idDrink } className="card" data-testid={ `${i}-recomendation-card` }>
-            <Link to={ `/drinks/${idDrink}` } className="card">
+          <Link to={ `/drinks/${idDrink}` } className="card" key={ idDrink }>
+            <div
+              className="card"
+              data-testid={ `${i}-recomendation-card` }
+            >
               <img
                 src={ strDrinkThumb }
                 alt={ strDrink }
@@ -39,8 +42,8 @@ function FoodDetails(props) {
               />
               <span>{ drinkCategory }</span>
               <h3 data-testid={ `${i}-recomendation-title` }>{strDrink}</h3>
-            </Link>
-          </div>
+            </div>
+          </Link>
         ))
     );
   }

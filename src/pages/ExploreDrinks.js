@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 function ExploreDrinks({ history }) {
   return (
     <div>
-      <Header title="Explore Drinks" haveSearch={ false } get="" />
+      <Header title="Explore Drinks" haveSearch={ false } get="a" />
       <div>
         <button
           type="button"
