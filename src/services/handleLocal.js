@@ -9,6 +9,8 @@ const local = {
       .setItem('favoriteRecipes', JSON.stringify(value)),
     inProgressRecipes: (value) => localStorage
       .setItem('inProgressRecipes', JSON.stringify(value)),
+    doneRecipes: (value) => localStorage
+      .setItem('doneRecipes', JSON.stringify(value)),
   },
   get: {
     mealsToken: () => JSON.parse(localStorage.getItem('mealsToken')),
@@ -16,6 +18,7 @@ const local = {
     user: () => JSON.parse(localStorage.getItem('user')),
     favoriteRecipes: () => JSON.parse(localStorage.getItem('favoriteRecipes')),
     inProgressRecipes: () => JSON.parse(localStorage.getItem('inProgressRecipes')),
+    doneRecipes: () => JSON.parse(localStorage.getItem('doneRecipes')),
   },
 };
 

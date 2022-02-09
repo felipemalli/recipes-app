@@ -49,6 +49,7 @@ function Routes() {
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/done-recipes" component={ DoneRecipes } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
+      <Route path="/explore/drinks/nationalities" component={ NotFound } />
       <Route path="*" component={ NotFound } />
     </Switch>
   );

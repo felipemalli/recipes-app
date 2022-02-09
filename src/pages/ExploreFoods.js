@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import requestAPI from '../services/requestAPI';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 function ExploreFoods({ history }) {
+  const [foodId, setFoodId] = useState('');
+
+  useEffect(() => {
+    requestAPI.getMeals.infoRandom().then((v) => setFoodId(v.meals[0].idMeal));
+  }, []);
+
   return (
     <div>
-      <Header title="Explore Foods" haveSearch={ false } />
+      <Header title="Explore Foods" haveSearch={ false } get="a" />
       <div>
         <button
           type="button"
@@ -25,6 +32,7 @@ function ExploreFoods({ history }) {
         <button
           type="button"
           data-testid="explore-surprise"
+          onClick={ () => history.push(`/foods/${foodId}`) }
         >
           Surprise me!
         </button>

@@ -33,7 +33,7 @@ function Drinks() {
 
   return (
     <div>
-      {mainDrinks.length === 1 && <Redirect
+      {mainDrinks && mainDrinks.length === 1 && <Redirect
         to={ { pathname: `/drinks/${mainDrinks[0].idDrink}` } }
       />}
       <Header title="Drinks" haveSearch get="getDrinks" />

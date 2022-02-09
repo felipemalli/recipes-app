@@ -1,8 +1,10 @@
+import local from '../services/handleLocal';
+
 const updateLocalInProgress = (type, id, ingredientList) => {
-  console.log(type);
-  console.log(id);
-  console.log(ingredientList);
-  // local.set.inProgressRecipes
+  const actualInProgress = local.get.inProgressRecipes();
+
+  actualInProgress[type] = { ...actualInProgress[type], [id]: ingredientList };
+  local.set.inProgressRecipes(actualInProgress);
 };
 
 export default updateLocalInProgress;

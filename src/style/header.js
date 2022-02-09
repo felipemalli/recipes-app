@@ -4,7 +4,7 @@ const ContainerHeader = styled.header`
   align-items: center;
   background-color: #ff5003;
   display: flex;
-  height: 20%;
+  height: 15vh;
   justify-content: space-evenly;
   width: 100%;
 

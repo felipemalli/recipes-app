@@ -4,13 +4,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import requestAPI from '../services/requestAPI';
 import DetailsVideo from '../components/DetailsVideo';
-import RecipeCard from '../components/RecipeCard';
 import DetailsIngredients from '../components/DetailsIngredients';
 import FavoriteButton from '../components/FavoriteButton';
 import ShareButton from '../components/ShareButton';
-import StartRecipeButton from '../components/StartRecipeButton';
-import { Section, MainContainer } from '../style/recommended';
-// import local from '../services/handleLocal';
+import { Section, MainContainer, ButtonStart } from '../style/foodDetails';
 
 function FoodDetails(props) {
   const [details, setDetails] = useState([]);
@@ -32,15 +29,22 @@ function FoodDetails(props) {
       recommendations && recommendations
         .filter((_, i) => i < RECOMMENDATION_LIMIT)
         .map(({ idDrink, strDrinkThumb, strDrink, strCategory: drinkCategory }, i) => (
-          <RecipeCard
-            key={ idDrink }
-            img={ strDrinkThumb }
-            name={ strDrink }
-            index={ i }
-            id={ idDrink }
-            type="foods"
-            category={ drinkCategory }
-          />))
+          <Link to={ `/drinks/${idDrink}` } className="card" key={ idDrink }>
+            <div
+              className="card"
+              data-testid={ `${i}-recomendation-card` }
+            >
+              <img
+                src={ strDrinkThumb }
+                alt={ strDrink }
+                data-testid={ `${i}-card-img` }
+                className="imgcard"
+              />
+              <span>{ drinkCategory }</span>
+              <h3 data-testid={ `${i}-recomendation-title` }>{strDrink}</h3>
+            </div>
+          </Link>
+        ))
     );
   }
 
@@ -51,26 +55,29 @@ function FoodDetails(props) {
         alt={ strMeal }
         data-testid="recipe-photo"
         width={ 200 }
+        className="image"
       />
-      <section>
+      <section className="favorite">
         <h1 data-testid="recipe-title">{ strMeal }</h1>
         <span data-testid="recipe-category">{ strCategory }</span>
-        <ShareButton />
-        { details.length !== 0 && <FavoriteButton
-          details={ details }
-          type="food"
-          idType="idMeal"
-        /> }
+        <div>
+          <ShareButton />
+          { details.length !== 0 && <FavoriteButton
+            details={ details }
+            type="food"
+            idType="idMeal"
+          /> }
+        </div>
       </section>
-      <section>
+      <section className="ingredients">
         <h2>Ingredients</h2>
         { details.length !== 0 && <DetailsIngredients details={ details } /> }
       </section>
-      <section>
+      <section className="instructions">
         <h2>Instructions</h2>
         <p data-testid="instructions">{ details.strInstructions }</p>
       </section>
-      <section>
+      <section className="video">
         <h2>Video</h2>
         {details.length !== 0 && <DetailsVideo
           title={ strMeal }
@@ -86,32 +93,13 @@ function FoodDetails(props) {
         </div>
       </Section>
       <Link to={ `/foods/${recipeId}/in-progress` }>
-        <StartRecipeButton />
-        {/* <button
-          type="button"
-          data-testid="start-recipe-btn"
-          onClick={ () => updateLocalInProgress('food',
-            recipeId, ingredientsArray(details)) }
-        >
+        <ButtonStart type="button" data-testid="start-recipe-btn">
           Start Recipe
-        </button> */}
+        </ButtonStart>
       </Link>
     </MainContainer>
   );
 }
-
-// a chave inProgressRecipes deve conter a seguinte estrutura:
-// {
-//     cocktails: {
-//         id-da-bebida1: [lista-de-ingredientes-utilizados1],
-//         id-da-bebida2: [lista-de-ingredientes-utilizados2]
-//         ...
-//     },
-//     meals: {
-//         id-da-comida: [lista-de-ingredientes-utilizados],
-//         ...
-//     }
-// }
 
 FoodDetails.propTypes = {
   match: PropTypes.shape({

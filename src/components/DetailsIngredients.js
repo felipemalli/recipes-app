@@ -9,8 +9,8 @@ export default function DetailsIngredients(props) {
 
   return (
     <ul>
-      {arrayOfIngredients.map((i) => (
-        <li key={ i } data-testid={ `${i}-ingredient-name-and-measure` }>{i}</li>
+      {arrayOfIngredients.map((i, index) => (
+        <li key={ i } data-testid={ `${index}-ingredient-name-and-measure` }>{i}</li>
       ))}
     </ul>
   );

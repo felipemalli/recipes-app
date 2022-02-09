@@ -8,13 +8,11 @@ function RecipeCard(props) {
 
   return (
     <CardFoods data-testid={ `${index}-recipe-card` }>
-      <div>
-        <Link to={ `/${type}/${id}` }>
-          <img src={ img } alt={ name } data-testid={ `${index}-card-img` } />
-        </Link>
+      <Link className="link" to={ `/${type}/${id}` }>
+        <img src={ img } alt={ name } data-testid={ `${index}-card-img` } />
         <span data-testid="recipe-category">{ category }</span>
         <h3 data-testid={ `${index}-card-name` }>{name}</h3>
-      </div>
+      </Link>
     </CardFoods>
   );
 }

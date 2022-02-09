@@ -32,7 +32,7 @@ function ExploreFoodsByIngredients(props) {
 
   return (
     <div>
-      <Header title="Explore Ingredients" haveSearch={ false } />
+      <Header title="Explore Ingredients" haveSearch={ false } get="a" />
       {isLoading === true
         ? <Loading />
         : mealsIngredients.map((v, index) => (
